@@ -63,8 +63,8 @@ is 5 times faster, and `Each` is an optimized variant for 1-to-0 mapping that
 just iterates through the input without capturing any output.
 
 The main motivation for providing so many variants of the basic `Map` function
-is the significant runtime performance difference associated each use-case, and
-the benefits that can be gained by selecting the right one.
+is the significant runtime performance difference associated with each use-case,
+and the benefits that can be gained by selecting the right one.
 
 ### Composition
 
@@ -79,7 +79,7 @@ functions, not methods. A generic type can have methods, but those methods do
 not accept any additional type parameter. This makes a call-chaining style
 syntax impossible to implement.
 
-Consequently, it seems that the best we can do is provide basic functions
+Consequently, it seems that the best we can do is to provide basic functions
 (`Each`, `Map`, `FlatMap`) and selected composite functions for the most useful
 cases. For example `slice.FlatMapCons(v, 2, ...)` is equivalent to
 `slices.FlatMap(slices.Cons(v, 2), ...)` but without using intermediate storage
