@@ -1,8 +1,7 @@
 # go-generics
 
-Collection of generic functions for Go 1.18, implementing functional style
-operation on slices.
-
+Go utility library building functional-style features on upcoming Go 1.18
+generics.
 
 [![Latest](
   https://img.shields.io/github/v/tag/maargenton/go-generics?color=blue&label=latest&logo=go&logoColor=white&sort=semver)](
