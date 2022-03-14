@@ -20,7 +20,7 @@ jobs:
           # - "1.14.x"
           # - "1.15.x"
           # - "1.16.x"
-          - "1.18rc1"
+          - "1.18.0-rc1"
         os:
           - ubuntu-latest
           - macos-latest
@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
+          stable: 'false'
 
       - name: Check version
         run: go version
