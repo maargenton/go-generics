@@ -1,8 +1,8 @@
 package slices
 
 import (
-	"constraints"
-
+	// "constraints"
+	"golang.org/x/exp/constraints"
 	"golang.org/x/exp/slices"
 )
 
