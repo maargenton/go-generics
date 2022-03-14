@@ -29,6 +29,10 @@ go install golang.org/dl/go1.18beta2@latest
 go1.18beta2 download
 ```
 
+2. Open VSCode on the workspace and update the go tools. The workspace contains
+   local settings to use the installed beta rather than the default version. In
+   the command palette, select "Go: Install/Update Tools".
+
 ## Motivation
 
 I have been using Go professionally for many years. With the long awaited
@@ -85,10 +89,47 @@ cases. For example `slice.FlatMapCons(v, 2, ...)` is equivalent to
 `slices.FlatMap(slices.Cons(v, 2), ...)` but without using intermediate storage
 for the result of `Cons`.
 
-x         | ∅         | Cons | Slice | SliceBetween | SliceBy
---------- | --------- | - | - | - | -
-∅         | ∅         | Cons | Slice | SliceBetween | SliceBy
-Each      | Each      | EachCons | EachSlice | EachSliceBetween | EachSliceBy
-Map       | Map       | MapCons | MapSlice | MapSliceBetween | MapSliceBy
-FilterMap | FilterMap | FilterMapCons | FilterMapSlice | FilterMapSliceBetween | FilterMapSliceBy
-FlatMap   | FlatMap   | FlatMapCons | FlatMapSlice | FlatMapSliceBetween | FlatMapSliceBy
+#### Iteration and transformation functions
+
+- `Each( []T, func(T) )`: Invoke the given function with each element of the
+  input. The function does not return anything.
+- `Map( []T, func(T)U )`: Invoke the given function with each element of the
+  input. The function returns a single value per element that gets collected in
+  the result.
+- `FilterMap( []T, func(T)(U,bool) )`: Invoke the given function with each
+  element of the input. The function returns an optional value per element that
+  gets collected in the result. The function return value is discarded if the
+  second return value is false.
+- `FlatMap( []T, func(T)[]U )`: Invoke the given function with each element of
+  the input. The function returns a slice of values per element that gets
+  collected in the result.
+
+#### Traversal modes
+
+- `∅`: When no specific traversal mode is specified, the input is enumerated,
+  one element at a  time.
+- `Cons(n)`: Iterate over each contiguous overlapping n-tuple of the input. An
+  input shorter than `n` result in no iteration.
+- `Slice(n)`: Iterate over each contiguous disjoint n-tuple of the input. All
+  iterations are of size `n` except the last one which can be shorter.
+- `SliceBy( func(T)U )`: Iterate over each contiguous disjoint variable-size
+  tuples of the input for which all elements result is the same value when
+  invoking the given function.
+- `SliceBetween( func(T,T)bool )`: The given function is invoked with each
+  cons(2) of the input and the input is split at the point between the two
+  elements when the function returns true. The iteration happens over each
+  resulting split, which are contiguous disjoint variable-size tuples of the
+  input.
+- `Zip( ...[]T )`: Iterate over tuples formed by taking the same-index element
+  in each input.
+
+#### Composite function names
+
+Composition is achieved by mixing an iteration/transform method and a traversal
+mode. For example `FlatMapZip( []T{a,b,c}, f)` iterates over 3-tuple composed of
+matching elements of a, b, and c, invokes f and appends the resulting elements
+to the final results.
+
+Some functions like `FlatMapSliceBetween()` expect two separate functions, one
+for slicing, one for mapping. For readability, it might be good practice to
+define one or both as local variables rather than inline.
