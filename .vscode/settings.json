@@ -1,0 +1,7 @@
+{
+    "go.gopath": "~/.go/1.18beta2",
+    "go.alternateTools": {
+        "go": "~/sdk/go1.18beta2/bin/go",
+        "gofmt": "~/sdk/go1.18beta2/bin/gofmt"
+    }
+}
