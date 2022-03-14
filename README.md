@@ -23,29 +23,27 @@ generics.
 ## Usage, pre 1.18 release
 
 1. Install lates Go 1.18 beta
-
-```
-go install golang.org/dl/go1.18beta2@latest
-go1.18beta2 download
-```
-
+    ```
+    go install golang.org/dl/go1.18beta2@latest
+    go1.18beta2 download
+    ```
 2. Open VSCode on the workspace and update the go tools. The workspace contains
    local settings to use the installed beta rather than the default version. In
    the command palette, select "Go: Install/Update Tools".
 
 ## Motivation
 
-I have been using Go professionally for many years. With the long awaited
-introduction of generics right around the corner with the upcoming release of Go
-1.18, I felt the urge to get right into it and do something useful.
+With the long awaited introduction of generics right around the corner with the
+upcoming release of Go 1.18, it is time to get right into it and build something
+useful.
 
 The new version of the language introduces type parameters for types and
 functions. It does not include any new generic functions in the standard
 library, but provides 3 experimental packages containing a few useful
 definitions and functions.
 
-One of the things commonly found in other languages that I really miss in Go is
-a set of functional-style primitives to slice and dice and transform slices
+One of the things commonly found in other languages that is still missing in Go
+is a set of functional-style primitives to slice and dice and transform slices
 (like Ruby Enumerable or Javascript underscore.js). Slices in Go are one of the
 few built-in type-parameterized types, making them a prime target for a library
 of type-parameterized generic functions.
