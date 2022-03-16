@@ -1,4 +1,8 @@
 
+# v0.0.2
+
+Complete initial feature set for operating on slices.
+
 # v0.0.1
 
 - Initial public release
