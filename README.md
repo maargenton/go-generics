@@ -68,6 +68,23 @@ The main motivation for providing so many variants of the basic `Map` function
 is the significant runtime performance difference associated with each use-case,
 and the benefits that can be gained by selecting the right one.
 
+#### Benchmark results
+
+```
+go1.18beta2 test -bench=. -benchmem ./...
+
+goos: darwin
+goarch: amd64
+pkg: github.com/maargenton/go-generics/pkg/slices
+cpu: Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz
+BenchmarkMap100-8           3442987       343.9 ns/op       416 B/op       1 allocs/op
+BenchmarkFilterMap100-8     1748782       689.9 ns/op      1016 B/op       7 allocs/op
+BenchmarkFlatMap100-8        527290      2092 ns/op        1416 B/op     107 allocs/op
+BenchmarkMap10K-8             37706     31540 ns/op       40962 B/op       1 allocs/op
+BenchmarkFilterMap10K-8       21512     55830 ns/op      141180 B/op      17 allocs/op
+BenchmarkFlatMap10K-8          6038    185977 ns/op      181191 B/op   10017 allocs/op
+```
+
 ### Composition
 
 In Ruby, functional primitives are chainable and allow for the definition of quite sophisticated processing with a compact syntax.
