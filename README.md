@@ -1,7 +1,6 @@
 # go-generics
 
-Go utility library building functional-style features on upcoming Go 1.18
-generics.
+Go utility library building functional-style features on new Go 1.18 generics.
 
 [![Latest](
   https://img.shields.io/github/v/tag/maargenton/go-generics?color=blue&label=latest&logo=go&logoColor=white&sort=semver)](
@@ -43,6 +42,14 @@ one by one or by consecutive subsets, overlapping (`Cons`) or disjoint
 (`Slice`).
 
 ## API Design
+
+### Stability and completeness
+
+- `slices` package is overall complete and stable as of v0.1.0. Functions SHOULD
+  NOT change in a backward incompatible way. Some additional function may be
+  added before reaching v1.0.0.
+- `maps` package is minimal but stable as of v0.1.0.
+- More documentation and feedback is needed for v1.0.0.
 
 ### Flexibility and performance
 
