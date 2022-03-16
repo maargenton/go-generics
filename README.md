@@ -20,17 +20,6 @@ generics.
 ---------------------------
 
 
-## Usage, pre 1.18 release
-
-1. Install lates Go 1.18 beta
-    ```
-    go install golang.org/dl/go1.18beta2@latest
-    go1.18beta2 download
-    ```
-2. Open VSCode on the workspace and update the go tools. The workspace contains
-   local settings to use the installed beta rather than the default version. In
-   the command palette, select "Go: Install/Update Tools".
-
 ## Motivation
 
 With the long awaited introduction of generics right around the corner with the
@@ -87,7 +76,8 @@ BenchmarkFlatMap10K-8          6038    185977 ns/op      181191 B/op   10017 all
 
 ### Composition
 
-In Ruby, functional primitives are chainable and allow for the definition of quite sophisticated processing with a compact syntax.
+In Ruby, functional primitives are chainable and allow for the definition of
+quite sophisticated processing with a compact syntax.
 
 ```ruby
 array.each_cons(2).flat_map { |a, b| ... }
