@@ -38,9 +38,9 @@ func EachSlice[T any](v []T, n int, f func(v []T)) {
 	}
 }
 
-// SliceBetween invokes the slicer function with each consecutive elements a and
-// b and splits the input between a and b if the slicer returns true. The result
-// is a slice of slices containing all the resulting splits.
+// SliceBetween invokes the slicer function with each consecutive element (`a`,
+// `b`) and splits the input between `a` and `b` if the slicer returns true. The
+// result is a slice of slices containing all the resulting splits.
 func SliceBetween[T any](v []T, slicer func(a, b T) bool) [][]T {
 	var r [][]T
 	EachSliceBetween(v, slicer, func(v []T) {
@@ -62,7 +62,7 @@ func EachSliceBetween[T any](v []T, slicer func(a, b T) bool, f func(v []T)) {
 	f(v[s:l])
 }
 
-// SliceBy slices the input into contiguous slices for which the function
+// SliceBy splits the input into contiguous slices for which the function
 // 'slicer' returns the same value.
 func SliceBy[T any, U comparable](v []T, slicer func(a T) U) [][]T {
 	var r [][]T
