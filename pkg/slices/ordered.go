@@ -23,7 +23,7 @@ func StableSort[T any](v []T, less func(a, b T) bool) []T {
 	return r
 }
 
-// Uniq returns a copy of `v` where only the first occurrance of a value is
+// Uniq returns a copy of `v` where only the first occurrence of a value is
 // preserved. The input must be a slice of comparable values, but does not have
 // to be sorted.
 func Uniq[T comparable](v []T) []T {
@@ -114,7 +114,7 @@ func StableSortBy[T any, U constraints.Ordered](v []T, f func(a T) U) []T {
 	return r
 }
 
-// UniqBy returns a copy of `v` where only the first occurrance of a value is
+// UniqBy returns a copy of `v` where only the first occurrence of a value is
 // preserved. Values are considered equal if the results of invoking `f` on them
 // are equal. The input does not have to be sorted.
 func UniqBy[T any, U comparable](v []T, f func(a T) U) []T {
