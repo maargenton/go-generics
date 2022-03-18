@@ -41,3 +41,17 @@ func TestFlatMap(t *testing.T) {
 	require.That(t, r).Field("FOO").Eq(2)
 	require.That(t, r).Field("BAR").Eq(4)
 }
+
+func TestFilter(t *testing.T) {
+
+	var v = map[string]int{
+		"foo": 1,
+		"bar": 2,
+	}
+	var r = maps.Filter(v, func(k string, v int) bool {
+		return v%2 == 0
+
+	})
+	require.That(t, r).MapKeys().IsEqualSet([]string{"bar"})
+	require.That(t, r).Field("bar").Eq(2)
+}
